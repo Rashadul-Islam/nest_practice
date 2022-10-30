@@ -46,4 +46,11 @@ export class UsersService {
       throw new HttpException('Authentication error', 404);
     }
   }
+  public async getAllUser(): Promise<UserDto[]> {
+    const user = await this.userModel.find();
+    if (!user || !user[0]) {
+      throw new HttpException('Not Found', 404);
+    }
+    return user;
+  }
 }

@@ -53,4 +53,10 @@ export class ProfileController {
     }
     return this.profileService.createNew(newUser);
   }
+
+  @UseGuards(JwtGuard)
+  @Get('/getAllProfile')
+  public getAllUser() {
+    return this.profileService.getAllProfile();
+  }
 }

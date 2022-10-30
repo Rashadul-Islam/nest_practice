@@ -1,3 +1,4 @@
+import { UsersModule } from './../users/users.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProfileController } from './profile.controller';
@@ -12,6 +13,7 @@ import { ProfileSchema } from './schema/profile.schema';
         schema: ProfileSchema,
       },
     ]),
+    UsersModule,
   ],
   controllers: [ProfileController],
   providers: [ProfileService],

@@ -17,7 +17,7 @@ import { JwtGuard } from './guards/jwt.gurd';
 @Controller('user')
 export class UsersController {
   constructor(private usersService: UsersService) {}
-  // @UseGuards(JwtGuard)
+
   @Post('/signUp')
   public signUpUser(
     @Res({ passthrough: true }) response: Response,
@@ -32,5 +32,11 @@ export class UsersController {
     @Body() user: UserDto,
   ) {
     return this.usersService.loginUser(response, user);
+  }
+
+  @UseGuards(JwtGuard)
+  @Get('/getAllUser')
+  public getAllUser() {
+    return this.usersService.getAllUser();
   }
 }
